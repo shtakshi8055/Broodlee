@@ -4,13 +4,12 @@ import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, si
 import { getFirestore } from 'firebase/firestore';
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCr0L7zro2GvMl9zfxGeyOMsfDFqPfWk0E",
-    authDomain: "broodle-44a48.firebaseapp.com",
-    projectId: "broodle-44a48",
-    storageBucket: "broodle-44a48.firebasestorage.app",
-    messagingSenderId: "177519056347",
-    appId: "1:177519056347:web:bffbec752cc847ce46c3fe",
-    measurementId: "G-7MZ01RKP93"
+  apiKey: process.env.NEXT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_APP_FIREBASE_APP_ID,
 };
 
 const app = initializeApp(firebaseConfig);
