@@ -94,9 +94,6 @@ export default function Logout() {
                                 Settings
                             </Link>
                         </li>
-                        <Link href="/mood-tracking" className="block px-4 py-2 hover:bg-gray-100 rounded-md">
-                              Mood Tracking
-                        </Link>
                         {/* Theme Toggle */}
                         <li>
                             <button 

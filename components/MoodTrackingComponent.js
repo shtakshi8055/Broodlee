@@ -107,7 +107,7 @@ export default function MoodTrackingComponent() {
         label: 'Average Mood Score',
         data: [averageMoodScore],
         backgroundColor: isDarkMode ? '#9e9e9e' : '#4caf50', // Light green for light mode, grey for dark mode
-        borderColor: isDarkMode ? '#000000' : '#ffffff', // White border in dark mode
+        borderColor: isDarkMode ? 'grey' : 'grey', // White border in dark mode
         borderWidth: 1,
       },
     ],

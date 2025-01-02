@@ -30,28 +30,29 @@ export default function Dashboard() {
     '😊 Good': 0,
     '😍 Elated': 0,
   });
-  const [showModal, setShowModal] = useState(false); // For the pie chart modal
-  const [averageMood, setAverageMood] = useState(0); // Store average mood value
-  const [barGraphData, setBarGraphData] = useState(null); // Store data for bar graph
-  const [currentDate, setCurrentDate] = useState(new Date()); // Track current date to detect day change
-  
+
+  const [showModal, setShowModal] = useState(false); 
+  const [averageMood, setAverageMood] = useState(0); 
+  const [barGraphData, setBarGraphData] = useState(null); 
+  const [currentDate, setCurrentDate] = useState(new Date()); 
   const now = new Date();
   const LOCAL_STORAGE_KEY = 'userData';
   const MOOD_COUNTS_KEY = 'moodCounts';
+  const [showPieChart, setShowPieChart] = useState(true);
 
+  const toggleChart = () => {
+    setShowPieChart(!showPieChart);
+  };
   const saveToLocalStorage = (uid, data) => {
     localStorage.setItem(`${LOCAL_STORAGE_KEY}_${uid}`, JSON.stringify(data));
   };
-
   const loadFromLocalStorage = (uid) => {
     const savedData = localStorage.getItem(`${LOCAL_STORAGE_KEY}_${uid}`);
     return savedData ? JSON.parse(savedData) : {};
   };
-
   const saveMoodCountsToLocalStorage = (uid, counts) => {
     localStorage.setItem(`${MOOD_COUNTS_KEY}_${uid}`, JSON.stringify(counts));
   };
-
   const loadMoodCountsFromLocalStorage = (uid) => {
     const savedCounts = localStorage.getItem(`${MOOD_COUNTS_KEY}_${uid}`);
     return savedCounts ? JSON.parse(savedCounts) : {
@@ -62,8 +63,6 @@ export default function Dashboard() {
       '😍 Elated': 0,
     };
   };
-
-  // Calculate stats
   function countValues() {
     let total_number_of_days = 0;
     let sum_moods = 0;
@@ -287,4 +286,3 @@ export default function Dashboard() {
     </div>
   );
 }
-
