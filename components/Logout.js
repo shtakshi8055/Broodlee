@@ -89,11 +89,6 @@ export default function Logout() {
                                 {currentUser.email}
                             </div>
                         </li>
-                        <li>
-                            <Link href="/settings" className="block px-4 py-2 hover:bg-gray-100 rounded-md">
-                                Settings
-                            </Link>
-                        </li>
                         {/* Theme Toggle */}
                         <li>
                             <button 

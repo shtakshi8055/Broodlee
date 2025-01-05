@@ -1,7 +1,8 @@
 'use client';
 
+import Link from 'next/link';
 import React, { useState } from 'react';
-
+import Button from './Button';
 const Settings = () => {
   const [darkMode, setDarkMode] = useState(false);
   const [chartType, setChartType] = useState('Pie');
@@ -104,6 +105,9 @@ const Settings = () => {
           ))}
         </ul>
       </div>
+      <Link href={'/dashboard'}>
+            <Button text="Go to dashboard" />
+      </Link>
     </div>
   );
 };

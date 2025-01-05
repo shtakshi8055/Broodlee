@@ -33,7 +33,6 @@ export default function Dashboard() {
 
   const [showModal, setShowModal] = useState(false); 
   const [averageMood, setAverageMood] = useState(0); 
-  const [barGraphData, setBarGraphData] = useState(null); 
   const [currentDate, setCurrentDate] = useState(new Date()); 
   const now = new Date();
   const LOCAL_STORAGE_KEY = 'userData';
@@ -231,12 +230,70 @@ export default function Dashboard() {
       </h4>
 
       {/* Pie Chart Section */}
-      <div
+      {/* <div
         className={'textGradient' + fugaz.className}
         style={{ width: '300px', height: '300px', margin: '0 auto' }}
         onClick={handlePieChartClick} // Add click handler
       >
         <Pie data={pieChartData} options={pieChartOptions} />
+      </div> */}
+<div className="flex justify-center items-center mb-4">
+  <button
+    onClick={toggleChart}
+    className="rounded-full px-4 py-2 bg-indigo-600 text-white hover:bg-indigo-700 transition"
+  >
+    Switch to {showPieChart ? 'Bar Chart' : 'Pie Chart'}
+  </button>
+</div>
+
+{/* Chart Section */}
+<div className="flex justify-center items-center">
+        {showPieChart ? (
+           <div className='pie'>
+            <Pie data={pieChartData} options={pieChartOptions} onClick={handlePieChartClick} />
+          </div>
+        ) : (
+          <div style={{ width: '90%', maxWidth: '500px', height: '400px' }}>
+            <Bar
+              onClick={handlePieChartClick}
+              data={{
+                labels: Object.keys(moodCounts),
+                datasets: [
+                  {
+                    label: 'Mood Counts',
+                    data: Object.values(moodCounts),
+                    backgroundColor: ['#ff4b5c', '#ffc93c', '#a1de93', '#6a4c93', '#00a896'],
+                  },
+                ],
+              }}
+              options={{
+                responsive: true, // Makes the chart responsive
+                maintainAspectRatio: false, // Ensures it fills the container
+                plugins: {
+                  legend: {
+                    position: 'top',
+                  },
+                },
+                scales: {
+                  x: {
+                    beginAtZero: true,
+                    title: {
+                      display: true,
+                      text: 'Mood',
+                    },
+                  },
+                  y: {
+                    beginAtZero: true,
+                    title: {
+                      display: true,
+                      text: 'Counts',
+                    },
+                  },
+                },
+              }}
+            />
+          </div>
+        )}
       </div>
 
       {/* Modal for Mood Summary */}
